@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
       title: 'QRReader',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        primaryColor: Colors.deepPurple
       ),
       initialRoute: 'home',
       routes: {
