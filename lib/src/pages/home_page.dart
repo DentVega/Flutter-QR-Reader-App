@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qrreaderapp/src/pages/direcciones_page.dart';
 import 'package:qrreaderapp/src/pages/mapas_page.dart';
+import 'package:barcode_scan/barcode_scan.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -23,7 +24,7 @@ class _HomePageState extends State<HomePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.filter_center_focus),
-        onPressed: () {},
+        onPressed: _scanQR,
         backgroundColor: Theme.of(context).primaryColor,
       ),
     );
@@ -51,6 +52,21 @@ class _HomePageState extends State<HomePage> {
 
       default:
         return MapasPage();
+    }
+  }
+
+  void _scanQR() async {
+    // https://pub.dev/packages/barcode_scan#-installing-tab-
+    // geo:40.72215149405802,-74.09795179804689
+    String futureString = '';
+    try {
+      futureString = await BarcodeScanner.scan();
+    } catch(e) {
+      futureString = e.toString();
+    }
+    print('Future String : ${futureString}');
+    if (futureString != null) {
+      print('tenemos informacion');
     }
   }
 }
