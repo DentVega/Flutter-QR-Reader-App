@@ -59,14 +59,17 @@ class _HomePageState extends State<HomePage> {
     // https://pub.dev/packages/barcode_scan#-installing-tab-
     // geo:40.72215149405802,-74.09795179804689
     String futureString = '';
-    try {
-      futureString = await BarcodeScanner.scan();
-    } catch(e) {
-      futureString = e.toString();
-    }
-    print('Future String : ${futureString}');
-    if (futureString != null) {
-      print('tenemos informacion');
-    }
+
+
+
+//    try {
+//      futureString = await BarcodeScanner.scan();
+//    } catch(e) {
+//      futureString = e.toString();
+//    }
+//    print('Future String : ${futureString}');
+//    if (futureString != null) {
+//      print('tenemos informacion');
+//    }
   }
 }
