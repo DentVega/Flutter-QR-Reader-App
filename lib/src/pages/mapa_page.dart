@@ -24,7 +24,7 @@ class MapaPage extends StatelessWidget {
     return FlutterMap(
       options: new MapOptions(
         center: scan.getLatLng(),
-        zoom: 10.00
+        zoom: 15.00
       ),
       layers: [
         _crearMapa(),
@@ -37,8 +37,9 @@ class MapaPage extends StatelessWidget {
       urlTemplate: 'https://api.mapbox.com/v4/'
           '{id}/{z}/{x}/{y}@2x.png?access_token={accessToken}',
       additionalOptions: {
-        'accessToken': '312pk.eyJ1IjoiYnJpYW52aCIsImEiOiJjazR3NTFkM3EwZWU0M2VxcXM0dnFidWtlIn0.E8WaxtdcIDhp6WY42iC7jA',
+        'accessToken': 'pk.eyJ1IjoiYnJpYW52aCIsImEiOiJjazR3NTFkM3EwZWU0M2VxcXM0dnFidWtlIn0.E8WaxtdcIDhp6WY42iC7jA',
         'id': 'mapbox.streets'
+        // streets, dark, light, outdoors, satellite
       }
     );
   }
