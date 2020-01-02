@@ -37,7 +37,7 @@ class MapaPage extends StatelessWidget {
       urlTemplate: 'https://api.mapbox.com/v4/'
           '{id}/{z}/{x}/{y}@2x.png?access_token={accessToken}',
       additionalOptions: {
-        'accessToken': 'pk.eyJ1IjoiYnJpYW52aCIsImEiOiJjazR3NTFkM3EwZWU0M2VxcXM0dnFidWtlIn0.E8WaxtdcIDhp6WY42iC7jA',
+        'accessToken': '312pk.eyJ1IjoiYnJpYW52aCIsImEiOiJjazR3NTFkM3EwZWU0M2VxcXM0dnFidWtlIn0.E8WaxtdcIDhp6WY42iC7jA',
         'id': 'mapbox.streets'
       }
     );
