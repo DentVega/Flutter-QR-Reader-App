@@ -22,25 +22,39 @@ class MapaPage extends StatelessWidget {
 
   Widget _crearFlutterMap(ScanModel scan) {
     return FlutterMap(
-      options: new MapOptions(
-        center: scan.getLatLng(),
-        zoom: 15.00
-      ),
+      options: new MapOptions(center: scan.getLatLng(), zoom: 15.00),
       layers: [
         _crearMapa(),
+        _crearMarcadores(scan),
       ],
     );
   }
 
   _crearMapa() {
     return TileLayerOptions(
-      urlTemplate: 'https://api.mapbox.com/v4/'
-          '{id}/{z}/{x}/{y}@2x.png?access_token={accessToken}',
-      additionalOptions: {
-        'accessToken': 'pk.eyJ1IjoiYnJpYW52aCIsImEiOiJjazR3NTFkM3EwZWU0M2VxcXM0dnFidWtlIn0.E8WaxtdcIDhp6WY42iC7jA',
-        'id': 'mapbox.streets'
-        // streets, dark, light, outdoors, satellite
-      }
-    );
+        urlTemplate: 'https://api.mapbox.com/v4/'
+            '{id}/{z}/{x}/{y}@2x.png?access_token={accessToken}',
+        additionalOptions: {
+          'accessToken':
+              '',
+          'id': 'mapbox.streets'
+          // streets, dark, light, outdoors, satellite
+        });
+  }
+
+  _crearMarcadores(ScanModel scan) {
+    return MarkerLayerOptions(markers: <Marker>[
+      Marker(
+          width: 100.0,
+          height: 100.0,
+          point: scan.getLatLng(),
+          builder: (context) => Container(
+                child: Icon(
+                  Icons.location_on,
+                  size: 45.0,
+                  color: Theme.of(context).primaryColor,
+                ),
+              ))
+    ]);
   }
 }
