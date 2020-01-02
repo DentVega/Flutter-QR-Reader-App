@@ -32,7 +32,7 @@ class MapasPage extends StatelessWidget {
                   onDismissed: (direccion) =>
                       scansBloc.borrarScans(scans[i].id),
                   child: ListTile(
-                    onTap: () => utils.abrirScan(scans[i]),
+                    onTap: () => utils.abrirScan(scans[i], context),
                     leading: Icon(
                       Icons.cloud_queue,
                       color: Theme.of(context).primaryColor,

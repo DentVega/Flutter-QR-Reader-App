@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.filter_center_focus),
-        onPressed: _scanQR,
+        onPressed: () => _scanQR(context),
         backgroundColor: Theme.of(context).primaryColor,
       ),
     );
@@ -65,7 +65,7 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  void _scanQR() async {
+  void _scanQR(BuildContext context) async {
     // https://pub.dev/packages/barcode_scan#-installing-tab-
     // geo:40.72215149405802,-74.09795179804689
 //    String futureString = '';
@@ -90,10 +90,10 @@ class _HomePageState extends State<HomePage> {
 
       if (Platform.isIOS) {
         Future.delayed(Duration(milliseconds: 750), () {
-          utils.abrirScan(scan);
+          utils.abrirScan(scan, context);
         });
       } else {
-        utils.abrirScan(scan);
+        utils.abrirScan(scan, context);
       }
     }
   }
