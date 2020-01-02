@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:qrreaderapp/src/models/scan_model.dart';
 
+//https://pub.dev/packages/flutter_map#-installing-tab-
+//https://account.mapbox.com/
+
 class MapaPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
