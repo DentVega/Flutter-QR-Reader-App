@@ -5,9 +5,15 @@ import 'package:qrreaderapp/src/models/scan_model.dart';
 //https://pub.dev/packages/flutter_map#-installing-tab-
 //https://account.mapbox.com/
 
-class MapaPage extends StatelessWidget {
+class MapaPage extends StatefulWidget {
+  @override
+  _MapaPageState createState() => _MapaPageState();
+}
 
+class _MapaPageState extends State<MapaPage> {
   final map = new MapController();
+
+  String tipoMapa = 'streets';
 
   @override
   Widget build(BuildContext context) {
@@ -16,12 +22,15 @@ class MapaPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Coordenadas QR'),
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.my_location), onPressed: () {
-            map.move(scan.getLatLng(), 15.0);
-          })
+          IconButton(
+              icon: Icon(Icons.my_location),
+              onPressed: () {
+                map.move(scan.getLatLng(), 15.0);
+              })
         ],
       ),
       body: _crearFlutterMap(scan),
+      floatingActionButton: _crearBotonFlotante(context),
     );
   }
 
@@ -43,7 +52,7 @@ class MapaPage extends StatelessWidget {
         additionalOptions: {
           'accessToken':
               '',
-          'id': 'mapbox.streets'
+          'id': 'mapbox.$tipoMapa'
           // streets, dark, light, outdoors, satellite
         });
   }
@@ -62,5 +71,30 @@ class MapaPage extends StatelessWidget {
                 ),
               ))
     ]);
+  }
+
+  Widget _crearBotonFlotante(BuildContext context) {
+    return FloatingActionButton(
+      onPressed: () {
+        // streets, dark, light, outdoors, satellite
+        setState(() {
+          if( tipoMapa == 'streets') {
+            tipoMapa = 'dark';
+          } else if (tipoMapa == 'dark') {
+            tipoMapa = 'light';
+          }
+          else if (tipoMapa == 'light') {
+            tipoMapa = 'outdoors';
+          }
+          else if (tipoMapa == 'outdoors') {
+            tipoMapa = 'satellite';
+          } else {
+            tipoMapa = 'streets';
+          }
+        });
+      },
+      child: Icon(Icons.repeat),
+      backgroundColor: Theme.of(context).primaryColor,
+    );
   }
 }
